@@ -1,0 +1,164 @@
+.appContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: linear-gradient(to bottom, #000000, #9c76ba);
+    border-radius: 15px;
+    padding: 40px;
+    min-width: 55vw;
+    max-width: 95vw;
+    min-height: 55vh;
+    box-sizing: border-box;
+    margin-top: 44px;
+    margin-bottom: 44px;
+}
+
+.appTitle {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 90px;
+    line-height: 1.1;
+    padding: 20px;
+    text-align: center;
+    font-weight: 550;
+    margin: 0;
+}
+
+.controls {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password_limit {
+    font-size: 22px;
+    margin: 10px;
+}
+
+#password_length {
+    border: 2px solid #050505;
+    font-weight: 400;
+    width: 140px;
+    text-align: center;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    isolation: isolate;
+}
+
+.generate_btn {
+    background-color: var(--bg);
+    color: var(--text-h);
+    border: none;
+    padding: 20px 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    position: relative;
+}
+
+.generate_btn:hover {
+    background-color: rgb(7, 94, 207);
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.generate_btn::after,
+.generate_btn::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background-image: conic-gradient(from var(--angle), transparent 50%, white);
+    z-index: -1;
+    border-radius: 23px;
+    animation: 3s spin linear infinite;
+}
+
+.generate_btn::before {
+    filter: blur(15px);
+    opacity: 0.7;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+
+    to {
+        --angle: 360deg;
+    }
+}
+
+.copy_btn {
+    background-color: var(--bg);
+    color: var(--text-h);
+    border: none;
+    padding: 20px 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    position: relative;
+}
+
+.copy_btn:hover {
+    background-color: rgb(7, 94, 207);
+}
+
+.copy_btn::after,
+.copy_btn::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background-image: conic-gradient(from var(--angle), transparent 50%, rgb(255, 255, 255));
+    z-index: -1;
+    border-radius: 23px;
+    animation: 3s spin linear infinite;
+}
+
+.copy_btn::before {
+    filter: blur(15px);
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .appContainer {
+        padding: 20px;
+        min-width: 90vw;
+    }
+
+    .appTitle {
+        font-size: 45px;
+        padding: 10px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .generate_btn, .copy_btn {
+        width: 100%;
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    #password_length {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
